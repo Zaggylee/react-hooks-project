@@ -9,6 +9,7 @@ const AddMovie = (props) => {
     movie_description: "",
     movie_rating: "",
     movie_title: "",
+    trailer_link: "",
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,26 +34,13 @@ const AddMovie = (props) => {
             { ...movieDetails, movie_id: randomId },
           ];
     localStorage.setItem("user_movies", JSON.stringify(moviesToStored));
-    // let parsedMovies = [];
-    // try {
-    //   const storedMovies = localStorage.getItem("user_movies");
-    //   parsedMovies = storedMovies ? JSON.parse(storedMovies) : [];
-    // } catch (error) {
-    //   console.error("Error parsing user_movies from localStorage:", error);
-    //   localStorage.removeItem("user_movies"); // Reset storage if corrupted
-    // }
 
-    // // Save to localStorage
-    // const moviesToStored = [
-    //   ...parsedMovies,
-    //   { ...movieDetails, movie_id: randomId },
-    // ];
-    // localStorage.setItem("user_movies", JSON.stringify(moviesToStored));
     setMovieDetails({
       movie_rating: "",
       movie_description: "",
       movie_posterUrl: "",
       movie_title: "",
+      trailer_link: "",
     });
     console.log("closing");
     setIsModalOpen(false);
@@ -95,6 +83,18 @@ const AddMovie = (props) => {
             size="large"
             placeholder="Enter image url"
           />
+          <Input
+            value={movieDetails.trailer_link}
+            onChange={(e) =>
+              setMovieDetails({
+                ...movieDetails,
+                trailer_link: e.target.value,
+              })
+            }
+            size="large"
+            placeholder="Enter trailer url"
+          />
+
           <InputNumber
             value={movieDetails.movie_rating}
             onChange={(value) =>

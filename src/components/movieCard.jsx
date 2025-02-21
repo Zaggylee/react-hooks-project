@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Card } from "antd";
+import { Link } from "react-router";
 const { Meta } = Card;
 
 function MovieCard(props) {
@@ -23,6 +24,8 @@ function MovieCard(props) {
           <div>
             <p>{props.movie_description}</p>
             <p>Ratings :{props.movie_rating}</p>
+            <p>trailer :{props.trailer_link}</p>
+            <Link to={`/${props.movie_id}`}>view more</Link>
           </div>
         }
       />
@@ -36,4 +39,5 @@ MovieCard.PropTypes = {
   movie_description: PropTypes.string,
   movie_posterUrl: PropTypes.string,
   movie_rating: PropTypes.number,
+  trailer_ink: PropTypes.string,
 };
